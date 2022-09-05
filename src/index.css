@@ -1,0 +1,140 @@
+:root {
+  --bg-color: #16213E;
+  --secondary-bg-color: #0F3460;
+  --third-bg-color: #494a7d;
+  --primary-color: #ffffff;
+  --secondary-color: #65ae48;
+}
+@keyframes animationMSG {
+  0%{
+    transform: scale(0.1);
+  }100%{
+    transform: scale(1);
+  }
+}
+#root{
+  overflow: hidden;
+}
+body {
+  background-color: var(--bg-color);
+  color: var(--primary-color);
+}
+
+/* === Steps === */
+#steps {
+  padding: 20px 0px;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.step p {
+  color: rgb(114, 114, 114);
+}
+.step i {
+  width: 45px;
+  height: 45px;
+  line-height: 45px;
+  font-size: 1.2rem;
+  text-align: center;
+  background-color: rgb(114, 114, 114);
+  border-radius: 50%;
+  z-index: 5;
+}
+.line {
+  border-bottom: 1.5px solid #163862;
+  width: 91%;
+  position: absolute;
+  top: 40px;
+  left: 40px;
+}
+.active {
+  background-color: var(--secondary-color) !important;
+}
+
+/* === order form === */
+.order__form {
+  max-width: 700px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+
+/* === header form === */
+.header__form{
+  margin-top: 20px;
+}
+.header__form p {
+  color: rgb(159, 159, 159);
+}
+
+/* === Container form === */
+.container__form input,
+.container__form select {
+  background-color: var(--bg-color);
+  color: var(--primary-color);
+  border: 2px solid var(--secondary-bg-color);
+}
+.container__form label {
+  color: #9da1ad;
+  left: 1em;
+}
+.container__form input:focus,
+.container__form select:focus {
+  background-color: var(--bg-color);
+  color: rgb(224, 224, 224);
+  border: 2px solid var(--secondary-color);
+}
+.container__form input:disabled,
+.container__form select:disabled {
+  background-color: var(--third-bg-color);
+  color: #9da1ad;
+}
+.label__cep {
+  left: 0em !important;
+}
+.container__form select {
+  padding-bottom: 12px !important;
+  padding-top: 12px !important;
+}
+.button__form{
+  background-color: var(--secondary-color) !important;
+  border: none;
+  border-radius: 150px;
+}
+.button__form:hover{
+  background-color: #5e9449;
+}
+
+/* === Container Messages === */
+.states {
+  padding-top: 250px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 150%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.521);
+  z-index: 10;
+}
+
+/* === loader ===*/
+.loader {
+  width: 60px;
+  height: 60px;
+}
+
+/* === Messege === */
+.modal__message{
+  animation: animationMSG 0.6s ease;
+}
+.modal__message p{
+  padding: 5px 0px;
+  border-bottom: 1px solid rgb(114, 114, 114);
+}
