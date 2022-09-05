@@ -9,8 +9,12 @@ export function Message(props) {
     document.querySelector("#input__5").value = ''
     document.querySelector("#input__6").value = 'Estado'
 
-    let inputs = document.querySelectorAll(".inputs")
-    inputs.setAttribute('disabled', 'disabled')
+    document.querySelector("#input__1").setAttribute('disabled', 'disabled')
+    document.querySelector("#input__2").setAttribute('disabled', 'disabled')
+    document.querySelector("#input__3").setAttribute('disabled', 'disabled')
+    document.querySelector("#input__4").setAttribute('disabled', 'disabled')
+    document.querySelector("#input__5").setAttribute('disabled', 'disabled')
+    document.querySelector("#input__6").setAttribute('disabled', 'disabled')
   }
 
   return (
