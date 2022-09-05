@@ -30,27 +30,29 @@ export function Form() {
   }
 
   const checkCEP = (e) => {
+
     if (e.target.value.length >= 9) {
       const cep = e.target.value.replace('-', '')
       setVisibleLoader(true)
+
       setTimeout(() => {
-      fetch(`https:/viacep.com.br/ws/${cep}/json/`)
-        .then(res => res.json())
-        .then(res => {
-          removeDisabled()
-          if (res.uf) {
-            setValue('estado', res.uf)
-            setValue('cidade', res.localidade)
-            setValue('bairro', res.bairro)
-            setValue('rua', res.logradouro)
-            setFocus('rua')
-          } else {
-            setMessage('CEP inválido, preencha o campo corretamente.')
-            setVisibleMessage(true)
-          }
-        })
-        .catch(error => console.error(error))
-        .finally(setVisibleLoader(false))
+        fetch(`https:/viacep.com.br/ws/${cep}/json/`)
+          .then(res => res.json())
+          .then(res => {
+            removeDisabled()
+            if (res.uf) {
+              setValue('estado', res.uf)
+              setValue('cidade', res.localidade)
+              setValue('bairro', res.bairro)
+              setValue('rua', res.logradouro)
+              setFocus('rua')
+            } else {
+              setMessage('CEP inválido, preencha o campo corretamente.')
+              setVisibleMessage(true)
+            }
+          })
+          .catch(error => console.error(error))
+          .finally(setVisibleLoader(false))
       }, 1000)
     } else if (e.target.value.length == 0) {
       return ''
