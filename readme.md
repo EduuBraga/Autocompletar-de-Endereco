@@ -4,7 +4,7 @@ Neste projeto desenvolvo o meu conhecimento com react e faço uma aplicação si
 
 O projeto foi desenvolvido com ReactJS, Bootstrap 5, HTML5, CSS3 e JavaScript.
 
-Tive como inspiração a aula do Matheus battisti, onde ele desenvolvia este mesmo projeto só que com apenas JS, então decide replica-lo, porem em ReactJS.
+Tive como inspiração a aula do Matheus battisti, onde ele desenvolvia este mesmo com JS puro, então decide replica-lo, porem em ReactJS.
 [Link da Aula](https://www.youtube.com/watch?v=FMaEIVdaAFo&t=2504s).
 
 Este projeto me ajudou a fixar melhor os meus conhecimentos em ReactJS e Bootstrap. Além do consumo de APIs, algo que tinha dificuldades de entender, mas com esse prejeto consegui fixar muito melhor.
