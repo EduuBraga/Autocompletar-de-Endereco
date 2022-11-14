@@ -41,6 +41,7 @@ export function Form() {
         .then(response => {
           if (!response.erro) {
             removeDisabled();
+            console.log(response)
             setValue('estado', response.uf);
             setValue('cidade', response.localidade);
             setValue('bairro', response.bairro);
