@@ -37,20 +37,22 @@ export function Form() {
       setVisibleLoader(true);
 
       fetch(`https://cdn.apicep.com/file/apicep/${cep}.json`)
-        .then(Response => Response.json())
+        .then(Response => {
+          setVisibleLoader(true)
+          return Response.json()
+        })
         .then(response => {
-          console.log(response)
           removeDisabled();
           setValue('estado', response.state);
           setValue('cidade', response.city);
           setValue('bairro', response.district);
           setValue('rua', response.address);
           setFocus('rua');
+          setVisibleLoader(false)
         })
         .catch(error =>
           console.error(error)
         )
-        .finally(setVisibleLoader(false))
     }
     else {
       setMessage('CEP inválido, preencha o campo corretamente.');
