@@ -36,7 +36,7 @@ export function Form() {
       const cep = e.target.value.replace('-', '');
       setVisibleLoader(true);
 
-      fetch(`https:/viacep.com.br/ws/${cep}/json/`)
+      fetch(`https://cdn.apicep.com/file/apicep/${cep}.json`)
         .then(response => response.json())
         .then(response => {
           console.log(response)
