@@ -29,18 +29,15 @@ export function Form() {
     });
   }
 
-  const checkCEP = (e) => {
-    const cepValid = e.target.value.length >= 9
+  const checkCEP = (event) => {
+    const cepValid = event.target.value.length >= 9
 
     if (cepValid) {
-      const cep = e.target.value
+      const cep = event.target.value
       setVisibleLoader(true);
 
       fetch(`https://cdn.apicep.com/file/apicep/${cep}.json`)
-        .then(Response => {
-          setVisibleLoader(true)
-          return Response.json()
-        })
+        .then(Response => Response.json())
         .then(response => {
           removeDisabled();
           setValue('estado', response.state);
@@ -48,11 +45,11 @@ export function Form() {
           setValue('bairro', response.district);
           setValue('rua', response.address);
           setFocus('rua');
-          setVisibleLoader(false)
         })
         .catch(error =>
           console.error(error)
         )
+        .finally(setVisibleLoader(false))
     }
     else {
       setMessage('CEP inválido, preencha o campo corretamente.');
@@ -62,7 +59,6 @@ export function Form() {
 
   return (
     <div className="container__form">
-
       <form id="form" onSubmit={handleSubmit(onSubmit)}>
         <div className="form-floating mb-3">
           <input
