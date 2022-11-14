@@ -37,10 +37,10 @@ export function Form() {
 
       fetch(`https://cdn.apicep.com/file/apicep/${cep}.json`)
         .then(Response => {
-          if(Response.ok){
+          if (Response.ok) {
             console.log(Response)
             return Response.json()
-          }else{
+          } else {
             setMessage('CEP inválido, preencha o campo corretamente.');
             setVisibleMessage(true);
           }
@@ -55,6 +55,9 @@ export function Form() {
         })
         .catch(error => console.error(error))
         .finally(setVisibleLoader(false))
+    }
+    else if (event.target.value === '') {
+      return null
     }
     else {
       setMessage('CEP inválido, preencha o campo corretamente.');
