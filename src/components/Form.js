@@ -36,9 +36,7 @@ export function Form() {
       const cep = e.target.value.replace('-', '');
       setVisibleLoader(true);
 
-      axios.get(`https:/viacep.com.br/ws/${cep}/json/`)
-        .then(response => {
-        console.log(response, response.data)})
+      axios.get(`https:/viacep.com.br/ws/${cep}/json/`).then(response => {console.log(response, response.data)})
         .then(response => {
           if (!response.erro) {
             removeDisabled();
