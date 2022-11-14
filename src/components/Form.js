@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { Loader } from "./Loader";
 import VMasker from "vanilla-masker";
 import { Message } from "./Message";
-import axios from "axios";
+// import axios from "axios";
 
 export function Form() {
   const { register, handleSubmit, setValue, setFocus } = useForm();
@@ -33,24 +33,19 @@ export function Form() {
     const cepValid = e.target.value.length >= 9
 
     if (cepValid) {
-      const cep = e.target.value.replace('-', '');
+      const cep = e.target.value
       setVisibleLoader(true);
 
       fetch(`https://cdn.apicep.com/file/apicep/${cep}.json`)
-        .then(response => response.json())
+        .then(Response => Response.json())
         .then(response => {
           console.log(response)
-          if (!response.erro) {
-            removeDisabled();
-            setValue('estado', response.uf);
-            setValue('cidade', response.localidade);
-            setValue('bairro', response.bairro);
-            setValue('rua', response.logradouro);
-            setFocus('rua');
-          }else{
-            setMessage('CEP inválido, preencha o campo corretamente.');
-            setVisibleMessage(true);
-          }
+          removeDisabled();
+          setValue('estado', response.state);
+          setValue('cidade', response.city);
+          setValue('bairro', response.district);
+          setValue('rua', response.address);
+          setFocus('rua');
         })
         .catch(error =>
           console.error(error)
