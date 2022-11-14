@@ -37,11 +37,11 @@ export function Form() {
       setVisibleLoader(true);
 
       axios.get(`https:/viacep.com.br/ws/${cep}/json/`)
-        .then(response => response.data)
+        .then(response => {
+        console.log(response, response.data)})
         .then(response => {
           if (!response.erro) {
             removeDisabled();
-            console.log(response)
             setValue('estado', response.uf);
             setValue('cidade', response.localidade);
             setValue('bairro', response.bairro);
