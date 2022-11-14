@@ -54,7 +54,7 @@ export function Form() {
           .catch(error => console.error(error))
           .finally(setVisibleLoader(false))
       }, 1000)
-    } else if (e.target.value.length == 0) {
+    } else if (e.target.value.length === 0) {
       return ''
     } else {
       setMessage('CEP inválido, preencha o campo corretamente.')
