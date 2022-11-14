@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { Loader } from "./Loader";
 import VMasker from "vanilla-masker";
 import { Message } from "./Message";
+import axios from "axios";
 
 export function Form() {
   const { register, handleSubmit, setValue, setFocus } = useForm();
@@ -29,27 +30,30 @@ export function Form() {
   }
 
   const checkCEP = (e) => {
-    if (e.target.value.length >= 9) {
+    const cepValid = e.target.value.length >= 9
+
+    if (cepValid) {
       const cep = e.target.value.replace('-', '');
       setVisibleLoader(true);
 
-      fetch(`https:/viacep.com.br/ws/${cep}/json/`)
-        .then(res => res.json())
-        .then(res => {
-          removeDisabled();
-
-          if (res.uf) {
-            setValue('estado', res.uf);
-            setValue('cidade', res.localidade);
-            setValue('bairro', res.bairro);
-            setValue('rua', res.logradouro);
+      axios.get(`https:/viacep.com.br/ws/${cep}/json/`)
+        .then(response => response.data)
+        .then(response => {
+          if (!response.erro) {
+            removeDisabled();
+            setValue('estado', response.uf);
+            setValue('cidade', response.localidade);
+            setValue('bairro', response.bairro);
+            setValue('rua', response.logradouro);
             setFocus('rua');
-          } else {
+          }else{
             setMessage('CEP inválido, preencha o campo corretamente.');
             setVisibleMessage(true);
           }
         })
-        .catch(error => console.error(error))
+        .catch(error =>
+          console.error(error)
+        )
         .finally(setVisibleLoader(false))
     }
     else {

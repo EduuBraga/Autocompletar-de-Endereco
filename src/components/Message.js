@@ -3,6 +3,9 @@ export function Message({ setVisibleMessage, message }) {
   function handleClick() {
     setVisibleMessage(false);
 
+    let inputCEP = document.querySelector('#cep');
+    inputCEP.value = '';
+
     let inputs = document.querySelectorAll('.inputs');
 
     inputs.forEach((input, index) => {
